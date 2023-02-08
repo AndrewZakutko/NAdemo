@@ -1,0 +1,19 @@
+<div class="container text-center mt-5">
+    <h1>Hello to our application</h1>
+    <h5>Select login or register to continue...</h5>
+    <div class="btn-group mt-3">
+        <button class="btn btn-info" style="width: 100px;" (click)="editRegisterMode()">
+            Register
+        </button>
+        <button class="btn btn-success" style="width: 100px;" (click)="editLoginMode()">
+            Login
+        </button>
+    </div>
+</div>
+
+<div *ngIf="isLoginMode">
+    <app-login (editEvent)="editLoginMode()"></app-login>
+</div>
+<div *ngIf="isRegisterMode">
+    <app-register (editEvent)="editRegisterMode()"></app-register>
+</div>

@@ -1,0 +1,4 @@
+.form-background {
+    background: rgb(10, 0, 172);
+    background: linear-gradient(90deg, rgba(10, 0, 172, 1) 0%, rgba(55, 55, 246, 1) 38%, rgba(52, 221, 255, 1) 100%);
+}

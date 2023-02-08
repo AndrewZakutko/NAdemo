@@ -1,0 +1,21 @@
+<div class="container pb-4 mt-5 border border-dark rounded form-background" style="width: 600px;">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <h3 class="text-center mt-3" style="color: white;">Login</h3>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="emailInput" formControlName="email">
+            <label for="emailInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="passwordInput" formControlName="password">
+            <label for="passwordInput">Password</label>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">
+                Login
+            </button>
+            <button class="btn btn-warning mx-2" (click)="editEvent.emit()">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>

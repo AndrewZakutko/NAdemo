@@ -32,10 +32,10 @@ builder.Services.AddAuthentication(auth => {
     {
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidAudience = "http://zakutkoandrii.net",
-        ValidIssuer = "http://zakutkoandrii.net",
+        ValidAudience = builder.Configuration["AuthSettings:Audience"],
+        ValidIssuer = builder.Configuration["AuthSettings:Issuer"],
         RequireExpirationTime = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("This is the key the we will use in the encription")),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AuthSettings:Key"])),
         ValidateIssuerSigningKey = true
     };
 });
@@ -45,6 +45,15 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+app.UseCors(builder => builder
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials()
+    .WithOrigins("https://localhost:4200"));
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
